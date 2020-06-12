@@ -35,7 +35,7 @@ const BERNIE = 2
 const STATE = 3
 const CANDIDATE = 4
 
-const dsared = '#6AAD44';
+const dsared = '#EC1F27';
 
 // https://stackoverflow.com/a/53636623/25560
 const prepareFontLoad = (fontList) => Promise.all(fontList.map(font => document.fonts.load(font)));
@@ -44,17 +44,17 @@ const prepareFontLoad = (fontList) => Promise.all(fontList.map(font => document.
 
 async function startGeneratingImage() {
 
-	const fontList = ['700 60px Montserrat', '600 60px Montserrat', '800 60px Montserrat' ]
+	const fontList = ['700 60px Montserrat', '600 60px Montserrat', '800 60px Montserrat']
 	await prepareFontLoad(fontList);
 
 	// the loaded images will be placed in imgs[]
 	imgs=[];
 
 	imageURLs=[];
-	imageURLs.push(avatarImageSrc ? avatarImageSrc : "img/oea-square.png");
+	imageURLs.push(avatarImageSrc ? avatarImageSrc : "img/logo_square.png");
 
 	imageURLs.push('img/background.jpeg');
-	imageURLs.push("img/oea.png");
+	imageURLs.push("img/logo.png");
 
 	imagesOK=0;
 	startLoadingAllImages(imagesAreNowLoaded);
@@ -103,8 +103,11 @@ function imagesAreNowLoaded(){
 
 	// Background Color
 
+	ctx.fillStyle = "#000000";
+	ctx.fillRect(0, 0, w, h/2);
+
 	ctx.fillStyle = bgcolor;
-	ctx.fillRect(0, 0, w, h);
+	ctx.fillRect(0, h/2, w, h);
 
 	// ----------------------------------------------------- Background Image - width is twice height
 
@@ -177,19 +180,19 @@ function imagesAreNowLoaded(){
 	ctx.strokeStyle = 'white';
 	ctx.stroke();
 
-	// ----------------------------------------------------- #OEA4Families
+	// ----------------------------------------------------- #
 
-	var hashtag = "#OEA4Families"
+	var hashtag = "#DoesNUCARE"
 	ctx.font = "800 " + String(45 * h/1000) + "px Montserrat, sans-serif";
 	ctx.textAlign = "right"
 
 	var hashtagWidth = ctx.measureText(hashtag).width;
 	var hashtagX= w*0.03
 
-	ctx.fillStyle = '#F8E71D';
+	ctx.fillStyle = dsared;
 	ctx.fillRect(w-hashtagWidth-hashtagX*2, h*0.05, hashtagWidth+hashtagX*2, h*0.08);
 
-	ctx.fillStyle = 'black';
+	ctx.fillStyle = '#ffffff';
 
 	ctx.fillText(hashtag, w-hashtagX, h*0.105, w*0.9);
 
@@ -201,21 +204,17 @@ function imagesAreNowLoaded(){
 	var jobWidth = ctx.measureText(job+ " ").width;
 	var jobX = w*0.01
 
-	var schoolWidth = ctx.measureText(school+ " ").width;
-	var schoolX = w*0.01
+	ctx.fillStyle = dsared;
+	ctx.fillRect(0, h*0.379, jobWidth+jobX, h*0.047)
 
-	ctx.fillStyle = '#F8E71D';
-	ctx.fillRect(0, h*0.344, Math.max(schoolWidth, jobWidth)+jobX, h*0.082)
+	ctx.fillStyle = 'white';
 
-	ctx.fillStyle = 'black';
-
-	ctx.fillText(job, jobX, h*0.376, w*0.9);
-	ctx.fillText(school, schoolX, h*0.411, w*0.9);
+	ctx.fillText(job, jobX, h*0.411, w*0.9);
 
 	// ----------------------------------------------------- Name + Endorses ______
 
 	var endorses = "";//(plural ? "endorse" : "endorses") + " ";
-	var endorseeName = "stands with Oakland families";//endorseeInfo.name;
+	var endorseeName = "stands with NU CARE";//endorseeInfo.name;
 
 	var fontSize = 90 * w/1000;
 	ctx.font = "800 " + String(fontSize) + "px Montserrat,sans-serif";
@@ -241,16 +240,23 @@ function imagesAreNowLoaded(){
 	
 
 	var ascent = fontSize * 0.74;
+
 	var extra = h * 0.01;
 
 	var y = h*0.52;
 	textX = w*0.058
 
-	ctx.fillStyle = dsared;
+	ctx.fillStyle = "#ec5258";
 	ctx.fillRect(textX-extra, y-ascent-extra, textWidth1+extra*2, ascent+2*extra);
 
 	ctx.fillStyle = 'white';
 	ctx.fillText(name, textX, y, textWidth1);
+
+	var namefont = "800 " + String(fontSize) + "px Montserrat,sans-serif";
+	var namename = name;
+	var nametextX = textX;
+	var namey = y;
+	var nametextWidth1 = textWidth1;
 
 
 
@@ -267,10 +273,10 @@ function imagesAreNowLoaded(){
 	y2 = h*0.60
 
 
-	ctx.fillStyle = dsared;
-	//ctx.fillRect(textX, y2-ascent-extra, textWidth2, ascent+2*extra);  // background of entire width - endorses + name
+	ctx.fillStyle = "#ec5258";
+	ctx.fillRect(textX-extra, y2-ascent-extra, textWidth2+extra*2, ascent+2*extra);  // background of entire width - endorses + name
 
-	ctx.font = "800 italic " + String(fontSize) + "px Montserrat,sans-serif";
+	ctx.font = "800 " + String(fontSize) + "px Montserrat,sans-serif";
 
 	ctx.fillStyle = 'white';
 	ctx.fillText(endorses, textX, y2, textWidth2a);
@@ -283,10 +289,18 @@ function imagesAreNowLoaded(){
 	ctx.fillStyle = 'white';
 	ctx.fillText(endorseeName, textX, y2, textWidth2);
 
+	ctx.font  = namefont;
+	ctx.fillText(namename, nametextX, namey, nametextWidth1);
+
+	// footer color
+
+	ctx.fillStyle = "#ec5258";
+	ctx.fillRect(0, h*0.85, w, h);
+
 
 	// Take the stimulus pledge today! ------------
 
-	var andBernieText = "Take the stimulus pledge today!";
+	var andBernieText = "Sign the petition for a safe reopening!";
 
 	fontSize = 43 * h/1000;
 	ctx.font = "800 " + String(fontSize) + "px Montserrat,sans-serif";
@@ -301,8 +315,8 @@ function imagesAreNowLoaded(){
 	}
 
 	ascent = fontSize * 0.74;
-	y = h*.90;
-	textX = w*0.058
+	y = h*.91;
+	textX = w*0.03
 
 	ctx.fillStyle = 'white';
 	ctx.fillText(andBernieText, textX, y, textWidth4);
@@ -310,7 +324,7 @@ function imagesAreNowLoaded(){
 
 	// tinyurl.com/OEA4Families ------------
 
-	andBernieText = "tinyurl.com/OEA4Families";
+	andBernieText = "bit.ly/DoesNUCARE";
 
 	fontSize = 40 * h/1000;
 	ctx.font = "700 " + String(fontSize) + "px Montserrat,sans-serif";
@@ -325,8 +339,8 @@ function imagesAreNowLoaded(){
 	}
 
 	ascent = fontSize * 0.74;
-	y = h*.95;
-	textX = w*0.058
+	y = h*.96;
+	textX = w*0.03
 
 	ctx.fillStyle = 'white';
 	ctx.fillText(andBernieText, textX, y, textWidth4);
@@ -397,7 +411,7 @@ function imagesAreNowLoaded(){
 	// ----------------------------------------------------- Quote Mark
 
 	ctx.font = "700 " + String(170 * h/1000) + "px Montserrat,sans-serif";
-	ctx.fillStyle = 'rgba(248, 231, 29, 0.5)';
+	ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
 	ctx.fillText("“", w*0.031, h*0.75, w*0.9);
 
 
@@ -483,13 +497,13 @@ function imagesAreNowLoaded(){
 	// ctx.fillText("Continuing the Political Revolution", w*0.051, h*0.98, w*0.9);
 
 
-	var logoWidth = w*0.22;
-	var logoHeight = logoWidth/3;
+	var logoWidth = w*0.08;
+	var logoHeight = logoWidth/0.89518413597;
 	ctx.drawImage(imgs[BERNIE], w*0.97-logoWidth, h*0.97-logoHeight, logoWidth, logoHeight);
 
 	canvas.toBlob(function(blob) {
         $("a#download").attr('href', URL.createObjectURL(blob));
-        $("a#download").attr('download', "OEA_Pledge.png");
+        $("a#download").attr('download', "NUCARE_Pledge.png");
 	});
 
 	var saveContainer = document.getElementById('saveContainer');
