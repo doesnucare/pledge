@@ -246,7 +246,7 @@ function imagesAreNowLoaded(){
 	var y = h*0.52;
 	textX = w*0.058
 
-	ctx.fillStyle = "#ec5258";
+	ctx.fillStyle = "#ec6e73";
 	ctx.fillRect(textX-extra, y-ascent-extra, textWidth1+extra*2, ascent+2*extra);
 
 	ctx.fillStyle = 'white';
@@ -273,7 +273,7 @@ function imagesAreNowLoaded(){
 	y2 = h*0.60
 
 
-	ctx.fillStyle = "#ec5258";
+	ctx.fillStyle = "#ec6e73";
 	ctx.fillRect(textX-extra, y2-ascent-extra, textWidth2+extra*2, ascent+2*extra);  // background of entire width - endorses + name
 
 	ctx.font = "800 " + String(fontSize) + "px Montserrat,sans-serif";
@@ -294,7 +294,7 @@ function imagesAreNowLoaded(){
 
 	// footer color
 
-	ctx.fillStyle = "#ec5258";
+	ctx.fillStyle = "#ec6e73";
 	ctx.fillRect(0, h*0.85, w, h);
 
 
@@ -327,12 +327,12 @@ function imagesAreNowLoaded(){
 	andBernieText = "bit.ly/DoesNUCARE";
 
 	fontSize = 40 * h/1000;
-	ctx.font = "700 " + String(fontSize) + "px Montserrat,sans-serif";
+	ctx.font = "700 italic " + String(fontSize) + "px Montserrat,sans-serif";
 	textWidth4 = ctx.measureText(andBernieText).width
 
 	if (textWidth4 + textX > w * 0.8) {
 		fontSize *= w*0.8/textWidth4;
-		ctx.font = "700 " + String(fontSize) + "px Montserrat,sans-serif";
+		ctx.font = "700 italic " + String(fontSize) + "px Montserrat,sans-serif";
 
 		// Recalc width based on new size
 		textWidth4 = ctx.measureText(andBernieText).width;
@@ -413,6 +413,13 @@ function imagesAreNowLoaded(){
 	ctx.font = "700 " + String(170 * h/1000) + "px Montserrat,sans-serif";
 	ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
 	ctx.fillText("“", w*0.031, h*0.75, w*0.9);
+
+	ctx.font = "700 " + String(170 * h/1000) + "px Montserrat,sans-serif";
+	ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+	console.log(ctx.measureText("”"));
+	ctx.fillText("”", w-w*0.031-ctx.measureText("”").width, h*0.9, w*0.9);
+
+	 
 
 
 	// ----------------------------------------------------- Paragraph Text
