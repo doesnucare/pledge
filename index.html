@@ -94,15 +94,26 @@
         This website and its code was derived from <a href="http://www.iendorsebernie.com">www.IEndorseBernie.com</a>
       </p>
     </footer>
+
+
+    <!-- email modal -->
+    <div id="email-modal" class="modal">
+      <p>Thank you for supporting NU CARE! <strong>Can you take the next step and send an email to university administrators</strong> to urge them to adopt our demands?</p>
+      <button id="send-email">Send Email</button>
+    </div>
+        
   </body>
   <div class="js-warning">This page requires JavaScript! </div>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\\/script>')</script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+  <script src="js/vendor/sentencer.js"></script>
   <script src="js/plugins.js"></script>
+  <script src="js/email.js"></script>
   <script src="js/main.js"></script>
   <script>
     document.documentElement.className = document.documentElement.className.replace("no-js","js");
-
   </script>
   <script>
     $("#generate").on('click', function() {
@@ -130,7 +141,22 @@
     	// }
       startGeneratingImage();
 
+      $('#email-modal').modal();
+
     	return false;
+    });
+
+    $("#send-email").on('click', function() {
+
+      // Set globals
+
+      name = $('#name-input').val().trim();
+      job = $('#job-input').val().trim();
+      quotation = $('#quotation').val().trim();
+
+      window.open(generateEmail(name, job, quotation));
+      
+      return false;
     });
 
   </script>
