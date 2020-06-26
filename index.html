@@ -154,6 +154,8 @@
       job = $('#job-input').val().trim();
       quotation = $('#quotation').val().trim();
 
+      $.modal.close();
+
       window.open(generateEmail(name, job, quotation));
       
       return false;
