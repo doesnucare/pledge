@@ -300,7 +300,7 @@ function imagesAreNowLoaded(){
 
 	// Take the stimulus pledge today! ------------
 
-	var andBernieText = "Sign the petition for a safe reopening!";
+	var andBernieText = "Take action for a safe reopening!";
 
 	fontSize = 43 * h/1000;
 	ctx.font = "800 " + String(fontSize) + "px Montserrat,sans-serif";
@@ -324,7 +324,7 @@ function imagesAreNowLoaded(){
 
 	// tinyurl.com/OEA4Families ------------
 
-	andBernieText = "bit.ly/DoesNUCARE";
+	andBernieText = "https://doesnu.care";
 
 	fontSize = 40 * h/1000;
 	ctx.font = "700 italic " + String(fontSize) + "px Montserrat,sans-serif";
