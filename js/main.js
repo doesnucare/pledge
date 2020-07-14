@@ -324,7 +324,7 @@ function imagesAreNowLoaded(){
 
 	// tinyurl.com/OEA4Families ------------
 
-	andBernieText = "https://doesnu.care";
+	andBernieText = "doesnu.care";
 
 	fontSize = 40 * h/1000;
 	ctx.font = "700 italic " + String(fontSize) + "px Montserrat,sans-serif";
