@@ -5,21 +5,17 @@
     <meta name="description" content="Generate your own graphic to support a safe and equitable reopening!">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="supported-color-schemes" content="light dark">
-    <link rel="apple-touch-icon" href="icon.png">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     <meta name="theme-color" content="#EC1F27">
 
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#ec1f27">
-  <meta name="msapplication-TileColor" content="#ec1f27">
-  <meta name="theme-color" content="#ec1f27">
-
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#ec1f27">
+    <meta name="msapplication-TileColor" content="#ec1f27">
+    <meta name="theme-color" content="#ec1f27">
 
     <!--<link rel="stylesheet" href="https://use.typekit.net/hqc5idp.css">-->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800&display=swap" rel="stylesheet"> 
@@ -117,11 +113,10 @@
   </script>
   <script>
     $("#generate").on('click', function() {
-
     	// Set globals
 
     	name = $('#name-input').val().trim();
-      job = $('#job-input').val().trim();
+        job = $('#job-input').val().trim();
     	quotation = $('#quotation').val().trim();
 
     	avatarImageSrc = $("#avatarImage").attr('src');
@@ -139,32 +134,31 @@
     	// else {
     	// 	startGeneratingImage();
     	// }
-      startGeneratingImage();
+        
+        startGeneratingImage();
 
-      $('#email-modal').modal();
+        $('#email-modal').modal();
 
     	return false;
     });
 
     $("#send-email").on('click', function() {
+        // Set globals
 
-      // Set globals
+        name = $('#name-input').val().trim();
+        job = $('#job-input').val().trim();
+        quotation = $('#quotation').val().trim();
 
-      name = $('#name-input').val().trim();
-      job = $('#job-input').val().trim();
-      quotation = $('#quotation').val().trim();
+        $.modal.close();
 
-      $.modal.close();
+        window.open(generateEmailURL(name, job, quotation));
 
-      window.open(generateEmail(name, job, quotation));
-      
-      return false;
+        return false;
     });
 
   </script>
   <script>
-    function readURL(input)
-    {
+    function readURL(input) {
     	$("#avatarImage").css("display", "block");
 
     	if (input.files && input.files[0]) {
